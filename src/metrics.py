@@ -19,3 +19,6 @@ def max_drawdown(cum_returns):
     peak = cum_returns.cummax()
     drawdown = (cum_returns - peak) / peak
     return drawdown.min()
+
+def portfolio_returns(returns, weights):
+    return returns.dot(weights)
