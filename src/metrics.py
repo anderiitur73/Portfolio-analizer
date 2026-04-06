@@ -28,3 +28,9 @@ def sortino_ratio(returns,risk_free=0.03):
     downside=np.minimum(returns,0)
     downside_std = np.sqrt((downside ** 2).mean())
     return excess_returns.mean()/downside_std*np.sqrt(252)
+
+def beta_ratio(returns,market="SPY"):
+    cov_mat=returns.cov()
+    market_var=cov_mat[market][market]
+    betas=cov_mat[market]/market_var
+    return betas.drop(market)

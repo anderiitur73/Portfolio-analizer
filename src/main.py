@@ -1,6 +1,6 @@
 import numpy as np
 from data_loader import get_data
-from metrics import daily_returns,cumulative_returns,volatility,sharpe_ratio,max_drawdown,portfolio_returns,sortino_ratio
+from metrics import daily_returns,cumulative_returns,volatility,sharpe_ratio,max_drawdown,portfolio_returns,sortino_ratio,beta_ratio
 from plotter import plot_cumulative,plot_drawdown,plot_volatility
 
 tickers = ["SPY", "AAPL", "MSFT"]
@@ -21,6 +21,7 @@ cum_comparativa["Portfolio"] = port_cum
 print("=== Individual asset metrics ===")
 print(f"Sharpe:  {sharpe_ratio(returns).round(4)}")
 print(f"Sortino: {sortino_ratio(returns).round(4)}")
+print(f"Beta ratio: {beta_ratio(returns).round(4)}")
 
 print("=== Portfolio metrics ===")
 print(f"Sharpe:      {sharpe_ratio(port_ret):.4f}")
@@ -28,6 +29,7 @@ print(f"Sortino:     {sortino_ratio(port_ret):.4f}")
 print(f"Volatility: {volatility(port_ret):.4f}")
 print(f"Max Drawdown:{max_drawdown(port_cum):.4f}")
 print(f"Acumulated rent: {port_cum.iloc[-1]:.4f}")
+
 
 """
 plot_cumulative(cum_comparativa)
