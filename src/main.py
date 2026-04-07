@@ -1,6 +1,6 @@
 import numpy as np
 from data_loader import get_data
-from metrics import daily_returns,cumulative_returns,volatility,sharpe_ratio,max_drawdown,portfolio_returns,sortino_ratio,beta_ratio
+from metrics import daily_returns,cumulative_returns,volatility,sharpe_ratio,max_drawdown,portfolio_returns,sortino_ratio,beta_ratio,correlation_matrix
 from plotter import plot_cumulative,plot_drawdown,plot_volatility
 
 tickers = ["SPY", "AAPL", "MSFT"]
@@ -22,6 +22,9 @@ print("=== Individual asset metrics ===")
 print(f"Sharpe:  {sharpe_ratio(returns).round(4)}")
 print(f"Sortino: {sortino_ratio(returns).round(4)}")
 print(f"Beta ratio: {beta_ratio(returns).round(4)}")
+
+print("\n=== Correlation matrix ===")
+print(correlation_matrix(returns))
 
 print("=== Portfolio metrics ===")
 print(f"Sharpe:      {sharpe_ratio(port_ret):.4f}")

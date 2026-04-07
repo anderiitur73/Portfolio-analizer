@@ -34,3 +34,6 @@ def beta_ratio(returns,market="SPY"):
     market_var=cov_mat[market][market]
     betas=cov_mat[market]/market_var
     return betas.drop(market)
+
+def correlation_matrix(returns):
+    return returns.corr().round(4)
