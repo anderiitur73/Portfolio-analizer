@@ -35,7 +35,7 @@ portfolio-analyzer/
 │
 ├── README.md
 └── requirements.txt
-
+```
 
 ## Usage
 
