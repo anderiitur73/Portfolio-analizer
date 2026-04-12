@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 def plot_cumulative(cum_returns):
     cum_returns.plot(figsize=(12, 6))
@@ -28,5 +29,23 @@ def plot_volatility(returns):
     plt.title("Annual Volatility by Asset")
     plt.ylabel("Volatility")
     plt.xticks(rotation=0)
+    plt.tight_layout()
+    plt.show()
+
+def plot_correlation(returns):
+    corr = returns.corr()
+    corr.index.name = None
+    corr.columns.name = None
+    
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(
+        corr,
+        annot=True,        # muestra el número dentro de cada celda
+        fmt=".2f",         # 2 decimales
+        cmap="RdYlGn",     # rojo = correlación baja, verde = alta
+        vmin=-1, vmax=1,   # rango fijo entre -1 y 1
+        linewidths=0.5     # líneas entre celdas
+    )
+    plt.title("Correlation Matrix")
     plt.tight_layout()
     plt.show()

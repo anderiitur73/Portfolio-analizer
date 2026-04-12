@@ -1,7 +1,7 @@
 import numpy as np
 from data_loader import get_data
-from metrics import daily_returns,cumulative_returns,volatility,sharpe_ratio,max_drawdown,portfolio_returns,sortino_ratio,beta_ratio,correlation_matrix
-from plotter import plot_cumulative,plot_drawdown,plot_volatility
+from metrics import daily_returns,cumulative_returns,volatility,sharpe_ratio,max_drawdown,portfolio_returns,sortino_ratio,beta_ratio,correlation_matrix,interpret_portfolio
+from plotter import plot_cumulative,plot_drawdown,plot_volatility,plot_correlation
 
 tickers = ["SPY", "AAPL", "MSFT"]
 data = get_data(tickers)
@@ -33,9 +33,16 @@ print(f"Volatility: {volatility(port_ret):.4f}")
 print(f"Max Drawdown:{max_drawdown(port_cum):.4f}")
 print(f"Acumulated rent: {port_cum.iloc[-1]:.4f}")
 
+market_ret = returns["SPY"]
+market_cum = cumulative_returns(market_ret)
+
+print("\n=== Portfolio Analysis ===")
+print(interpret_portfolio(port_ret, market_ret, port_cum, market_cum))
+
 
 """
 plot_cumulative(cum_comparativa)
 plot_drawdown(cum_comparativa)
 plot_volatility(returns)
 """
+plot_correlation(returns)
