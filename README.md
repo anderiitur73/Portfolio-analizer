@@ -22,7 +22,7 @@ I created a python tool to calculate some key finantial metrics from real market
 - Compares portfolio performance against S&P 500 with interpretive output
 
 ## Project Structure
-'''text
+```text
 portfolio-analyzer/
 │
 ├── data/
